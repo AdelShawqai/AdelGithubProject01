@@ -12,7 +12,7 @@ public class TestClass {
         System.out.println("Test method executed");
         driver.navigate();
         String s = ("https://www.google.com/");
-        driver.get(s);
+        driver.get(s);asdd
     driver.quit();
     }
 }
