@@ -18,9 +18,9 @@ public class TestClass {
         driver.get("https://www.facebook.com");
         String Ftitle = driver.getTitle();
         System.out.println(Ftitle);
-        driver.navigate().back();
-        String GGtitle = driver.getTitle();
-        System.out.println(GGtitle);
+//        driver.navigate().back();
+//        String GGtitle = driver.getTitle();
+//        System.out.println(GGtitle);
 
 
     driver.quit();
