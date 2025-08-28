@@ -40,12 +40,12 @@ public class TestClass01 {
         softAssert.assertAll();
 
 
-//        if (imgLogo.isDisplayed()) {
-//            imgLogo.click();
-//            System.out.println("The logo has been pressed.");
-//        } else {
-//            System.out.println("The item is present but not visible.");
-//        }
+        if (imgLogo.isDisplayed()) {
+            imgLogo.click();
+            System.out.println("The logo has been pressed.");
+        } else {
+            System.out.println("The item is present but not visible.");
+        }
     }
 
     @AfterTest
