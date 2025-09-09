@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -29,7 +30,8 @@ public class TestClass01 {
     public void testElementPresenceAndClick() {
         driver.navigate().to("https://duckduckgo.com/");
 
-        By logoSelector = By.xpath("(//img)[2]");
+        By logoSelector = By.xpath("(//im" +
+                "g)[2]");
         WebElement imgLogo = wait.until(ExpectedConditions.presenceOfElementLocated(logoSelector));
         String actualResult = driver.getTitle();
         System.out.println(actualResult);
