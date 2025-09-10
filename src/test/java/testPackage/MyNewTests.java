@@ -1,7 +1,8 @@
 package testPackage;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
@@ -154,9 +155,6 @@ public class MyNewTests {
      *  * send keys to the form field [Dropdown (select)] with value [New York]
      *  * check the form field [Checkbox] with value [Checked]
      *  * Use click action on the button  [submit]
-     *  *
-     *  *
-     *  *
      */
 
 @Test
@@ -227,7 +225,8 @@ public void myTestTask10() {
                         .pollingEvery(Duration.ofMillis(300))
                         .ignoring(ElementNotInteractableException.class)
                         .ignoring(NoSuchElementException.class)
-                        .ignoring(StaleElementReferenceException.class);
+                        .ignoring(StaleElementReferenceException.class)
+                        .ignoring(ElementClickInterceptedException.class);
         wait.until(d -> {
             d.findElement(hiddenInputLocator).sendKeys("You found me!");
             return true;
@@ -243,8 +242,8 @@ public void myTestTask10() {
 
         @BeforeMethod
     public void setUp() {
-//        driver = new ChromeDriver();
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+//        driver = new FirefoxDriver();
 
         driver.manage().window().maximize();
     }
