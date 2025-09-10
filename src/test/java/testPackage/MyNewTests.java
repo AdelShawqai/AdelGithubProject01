@@ -231,12 +231,10 @@ public void myTestTask10() {
             d.findElement(hiddenInputLocator).sendKeys("You found me!");
             return true;
                 });
-
         String inputValue = driver.findElement(hiddenInputLocator).getDomProperty("value");
         String expectedValue = "You found me!";
         Assert.assertEquals(inputValue, expectedValue, "Hidden input value mismatch!");
         System.out.println("Hidden input value: " + inputValue);
-
     }
 
 
