@@ -1,12 +1,9 @@
 package testPackage;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -189,7 +186,7 @@ public class MyNewTests {
 
 
 /**
- * Createing the same myTestTask9 with tap to send keys
+ * Creating the same myTestTask9 with tap to send keys
  */
     @Test
 public void myTestTask10() {
