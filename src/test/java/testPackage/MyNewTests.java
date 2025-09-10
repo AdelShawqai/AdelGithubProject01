@@ -1,13 +1,18 @@
 package testPackage;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 
 public class MyNewTests {
@@ -47,9 +52,7 @@ public class MyNewTests {
     @Test(dependsOnMethods = "myTestTask2")
     public void test1() {
         System.out.println("Test1 is running");
-        driver.findElement(By.xpath(""));
 
-        driver.findElements(By.xpath(""));
     }
 
     @Test(dependsOnMethods = "test1")
@@ -215,10 +218,37 @@ public void myTestTask10() {
 
     }
 
+    @Test
+    public void myTestTask11 () {
+        driver.navigate().to("https://www.selenium.dev/selenium/web/dynamic.html");
+        By revealButtonLocator = By.xpath("//input[@id='reveal']");
+        driver.findElement(revealButtonLocator).click();
+        By hiddenInputLocator = By.xpath("//input[@id='revealed']");
+
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                        .withTimeout(Duration.ofSeconds(2))
+                        .pollingEvery(Duration.ofMillis(300))
+                        .ignoring(ElementNotInteractableException.class)
+                        .ignoring(NoSuchElementException.class)
+                        .ignoring(StaleElementReferenceException.class);
+        wait.until(d -> {
+            d.findElement(hiddenInputLocator).sendKeys("You found me!");
+            return true;
+                });
+
+        String inputValue = driver.findElement(hiddenInputLocator).getDomProperty("value");
+        String expectedValue = "You found me!";
+        Assert.assertEquals(inputValue, expectedValue, "Hidden input value mismatch!");
+        System.out.println("Hidden input value: " + inputValue);
+
+    }
+
 
         @BeforeMethod
     public void setUp() {
-        driver = new ChromeDriver();
+//        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+
         driver.manage().window().maximize();
     }
     @AfterMethod
